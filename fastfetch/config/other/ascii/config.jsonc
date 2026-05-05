@@ -3,11 +3,13 @@
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
   "logo": {
   //the main header for the logo DO NOT BREAK THIS YOU FUCKING IDIOT --me to me
-    "source": "~/.config/fastfetch/fedora.txt",
+    "source": "~/.config/fastfetch/fedoranew.txt",
     "type": "file",
     "color": {
-      //"1": "38;2;89;89;89",
-      //"2": "white"
+      "1": "38;2;26;44;97",
+      "2": "white",
+      "3": "38;2;51;80;166",
+      "4": "cyan"
     },
     "padding": {
       "top": 0,

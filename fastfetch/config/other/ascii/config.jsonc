@@ -9,7 +9,7 @@
       "1": "38;2;26;44;97",
       "2": "white",
       "3": "38;2;51;80;166",
-      "4": "cyan"
+      "4": "white"
     },
     "padding": {
       "top": 0,
@@ -25,58 +25,64 @@
   "modules": [
         {
             "type": "title",
-            "key": "Welcome,",
+            "key": "  Welcome,",
             "keyColor": "38;2;184;184;184"
         }, 
         {
-        "type": "break"
+            "type": "break"
         },
         {
             "type": "custom",
-            "format": "System Information:",
+            "format": "╭──                  ──╮",
             "outputColor": "38;2;184;184;184"
         },
         {
-        "type": "break"
+            "type": "custom",
+            "format": "│  System Information  │",
+            "outputColor": "38;2;184;184;184"
         },
+
         {
             "type": "custom",
-            "format": "┌────╮",
-            "outputColor": "38;2;124;134;166"
+            "format": "╰──                  ──╯",
+            "outputColor": "38;2;184;184;184"
         },
         {
-            "type": "custom",
-            "format": "│ ┌──╯",
-            "outputColor": "38;2;124;134;166"
+            "type": "break"
         },
         {
             "type": "os",
-            "key": "│ │🖸 Distro",
-            "keyColor": "38;2;124;134;166"
+            "key": " ╱╲ > Distro", //🖸
+            "keyColor": "38;2;124;134;166",
+            "format": "{2}"
         },
         {
-            "type": "kernel",
-            "key": "│ │ > Kernel", //🖪
-            "keyColor": "38;2;124;134;166"
+            "type": "command",
+            "key": " ╲╱ > Kernel",
+            "keyColor": "38;2;124;134;166",
+            "text": "uname -r | cut -d'-' -f1 | sed 's/^/Linux /'"
         },
         {
             "type": "host",
-            "key": "│ │ > PC", //🖥
+            "key": " ╱╲ > PC", //🖥
             "keyColor": "38;2;124;134;166"
         },
         {
             "type": "uptime",
-            "key": "│ │ > Uptime",
+            "key": " ╲╱ > Uptime",
             "keyColor": "38;2;124;134;166"
         },
         {
+            "type": "break"
+        },
+        {
             "type": "custom",
-            "format": "│ └──╮",
+            "format": "├─────────────────────────────────────────────┤",
             "outputColor": "38;2;124;134;166"
         },
         {
             "type": "custom",
-            "format": "│ ┌──╯",
+            "format": "",
             "outputColor": "38;2;124;134;166"
         },
         //{
@@ -91,17 +97,18 @@
         //},
         {
             "type": "de",
-            "key": "│ │🖵 Desktop",
+            "key": " ╱╲ > Desktop Environment", //🖵
             "keyColor": "38;2;124;134;166"
         },
         {
-            "type": "display",
-            "key": "│ │ > Screen Res.",
-            "keyColor": "38;2;124;134;166"
+            "type": "command",
+            "key": " ╲╱ > Monitors",
+            "keyColor": "38;2;124;134;166",
+            "text": "res=($(xrandr --current | grep ' connected' | grep -oP '\\d+x\\d+')); echo \"1 at ${res[0]} & 2 at ${res[1]}\""
         },
         {
             "type": "wm",
-            "key": "│ │🗗 Window",
+            "key": " ╱╲ > Window Manager", //🗗
             "keyColor": "38;2;124;134;166"
         },
         //{
@@ -111,18 +118,19 @@
         //},
         {
             "type": "theme",
-            "key": "│ │ > Appearance",//🖋
+            "key": " ╲╱ > WM Appearance",//🖋
             "keyColor": "38;2;124;134;166"
         },
         {
-            "type": "custom",
-            "format": "│ └──╮",
-            "outputColor": "38;2;124;134;166"
+            "type": "break"
         },
         {
             "type": "custom",
-            "format": "│ ┌──╯",
+            "format": "├─────────────────────────────────────────────┤",
             "outputColor": "38;2;124;134;166"
+        },
+        {
+            "type": "break"
         },
         //{
             //"type": "terminal",
@@ -130,51 +138,41 @@
             //"keyColor": ""
         //},
         {
-            "type": "cpu",
-            "key": "│ │Processor",
-            "keyColor": "38;2;124;134;166"
+            "type": "command",
+            "key": " ╱╲ > CPU",
+            "keyColor": "38;2;124;134;166",
+            "text": "model=$(lscpu | grep 'Model name' | cut -d: -f2 | sed 's/11th Gen //; s/Intel(R) Core(TM) //; s/Processor//; s/^ *//; s/ @.*//'); max_ghz=$(lscpu | grep 'CPU max MHz' | awk '{printf \"%.2f\", $4/1000}'); echo \"$model @ ${max_ghz}GHz\""
         },
         {
-            "type": "gpu",
-            "key": "│ │GPU",
-            "keyColor": "38;2;124;134;166"
+            "type": "command",
+            "key": " ╲╱ > GPU",
+            "keyColor": "38;2;124;134;166",
+            "text": "gpu=\"Iris Xe Graphics\"; max_mhz=$(cat /sys/class/drm/card0/gt_max_freq_mhz 2>/dev/null || echo \"1300\"); ghz=$(echo \"scale=2; $max_mhz/1000\" | bc); echo \"$gpu @ ${ghz}GHz\""
         },
         {
             "type": "memory",
-            "key": "│ │RAM",
-            "keyColor": "38;2;124;134;166"
+            "key": " ╱╲ > RAM",
+            "keyColor": "38;2;124;134;166",
+            "format": "{2}"
         },
         {
             "type": "disk",
-            "key": "│ │🖴 Drive space",
-            "keyColor": "38;2;124;134;166"
+            "key": " ╲╱ > Drive space", //🖴
+            "keyColor": "38;2;124;134;166",
+            "format": "{2} [used {3}]"
         },
         {
             "type": "swap",
-            "key": "│ │ >🖿 Swap file",
-            "keyColor": "38;2;124;134;166"
+            "key": " ╱╲ > Swap file", //🖿
+            "keyColor": "38;2;124;134;166",
+            "format": "{2}"
         },
         {
-            "type": "custom",
-            "format": "│ └──╮",
-            "outputColor": "38;2;124;134;166"
-        },
-        {
-            "type": "custom",
-            "format": "└────╯",
-            "outputColor": "38;2;124;134;166"
-        },
-        {
-            "type": "break",
-            "key": ""
+            "type": "command",
+            "key": " ╲╱ > Sound",
+            "keyColor": "38;2;124;134;166",
+            "text": "amixer sget Master | grep -oP '\\[\\d+%\\]' | head -1 | xargs -I{} echo \"PS4 Headset {}\""
         }
-        //{
-        //line for custom color interface thingy and whatnot
-           // "type": "colors",
-           // "key": "{#separator}  {#keys}Cake Glazings:",
-            //"symbol": "square",
-            //"keyColor": "38;2;207;115;36"
-       // }
   ]
   
 }

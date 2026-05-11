@@ -4,4 +4,4 @@ the fedora one works great ootb iirc
 
 example of the fedora theme
 
-[image](fastfetch/config/other/ascii/image.png)
+[image](fastfetch/config/other/ascii/example.png)

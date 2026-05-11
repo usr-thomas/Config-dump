@@ -2,6 +2,6 @@ the ubuntu one needs like a really specific celll spacing of 1.40 with monospace
 
 the fedora one works great ootb iirc
 
-example of the fedora theme
+example of the fedora theme thingmaganguli
 
-![image](fastfetch/config/other/ascii/example.png)
+![image](example.png)
